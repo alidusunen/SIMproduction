@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'assets:asset-create' %} " class="btn btn-warning"> Create Asset </a>
+<button type="button"  data-toggle="modal" data-target="#columnHide" class="btn btn-danger" >Hide Columns</button>
+
+<div class="list-info">
+    <h1>List of Assets</h1>
+    <p>- Use "Hide Colums" button to show/hide columns as needed.</p>
+    <p>- Column width and order can be changed as needed. It will not effect excel export format.</p>
+    <p>- Click on the Tag Number or Description of the asset you would like to assign to a user</p>
+    <p>- User details will be opened when clicked on the User name</p>
+</div>
+
+<div id="wrapper">
+    <div class="list-view">
+      <div>
+        <table class="ui selectable celled striped table" id="mainTable" >
+          <thead>
+            <tr>
+              <th>Tag Number</th>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Serial Number</th>
+              <th>Item Description</th>
+              <th>Category</th>
+              <th>Sub-Category</th>
+              <th>User Name</th>
+              <th>Location</th>
+              <th>Physical Location</th>
+              <th>Condition</th>
+              <th>Accessories</th>
+              <th>Purchase File Ref.</th>
+              <th>Invoice Date</th>
+              <th>Price</th>
+              <th>Current Value</th>
+              <th>Donor</th>
+              <th>Budget Code</th>
+              <th>Supplier's Name</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for instance in object_list %}
+            <tr>
+              <td class="selectable"><a href="{{ instance.get_absolute_url }}">{{ instance.tag_number }}</a></td>
+              <td>{{ instance.brand }}</a></td>
+              <td>{{ instance.model }}</a></td>
+              <td>{{ instance.serial }}</a></td>
+              <td class="selectable"><a href="{{ instance.get_absolute_url }}">{{ instance.description }}</a></td>
+              <td>{{ instance.sub_category.category.name}}</a></td>
+              <td>{{ instance.sub_category.name}}</a></td>
+              <td class="selectable"><a href="{{ instance.custodian.get_absolute_url }}">{{ instance.custodian.name }}</a></td>
+              <td>{{ instance.location }}</a></td>
+              <td>{{ instance.physical_location }}</a></td>
+              <td>{{ instance.condition }}</a></td>
+              <td>{{ instance.accessories }}</a></td>
+              <td>{{ instance.purchaseReference }}</a></td>
+              <td>{{ instance.purchaseDate }}</a></td>
+              <td>{{ instance.price }}</a></td>
+              <td>{{ instance.depreciation }}</a></td>
+              <td>{{ instance.donor }}</a></td>
+              <td>{{ instance.budgetCode }}</a></td>
+              <td>{{ instance.supplierName }}</a></td>
+              <td>{{ instance.comments }}</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+    </div>
+</div>
+
+<!-- Modal for Hide Colums Validation -->
+<div class="modal modal-xl"  id="columnHide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Show Hide Sections / Columns</h4>
+      </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <h4>Select Sections to Hide</h4>
+                      <div>
+                          <input id="sect1" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Usage Information</label>
+                      </div>
+                      <div>
+                          <input id="sect2" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Procurement Information</label>
+                      </div>
+                      <div>
+                          <input id="sect3" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Asset Assign View</label>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <h4>Select Columns to Hide</h4>
+                      <p>Asset Information</p>
+                      <div>
+                          <input id="col1" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Brand</label>
+                      </div>
+                      <div>
+                          <input id="col2" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Model</label>
+                      </div>
+                      <div>
+                          <input id="col3" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Serial</label>
+                      </div>
+                      <div>
+                          <input id="col5" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Category</label>
+                      </div>
+                      <div>
+                          <input id="col6" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Sub-Category</label>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <p>User&Location Information</p>
+                      <div>
+                          <input id="col7" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Custodian</label>
+                      </div>
+                      <div>
+                          <input id="col8" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Location</label>
+                      </div>
+                      <div>
+                          <input id="col9" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Physical Location</label>
+                      </div>
+                      <div>
+                          <input id="col10" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Condition</label>
+                      </div>
+                      <div>
+                          <input id="col11" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Accessories</label>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <p>Procurement Information</p>
+                      <div>
+                          <input id="col12" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">PSR Reference</label>
+                      </div>
+                      <div>
+                          <input id="col13" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Invoice Date</label>
+                      </div>
+                      <div>
+                          <input id="col14" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Price</label>
+                      </div>
+                      <div>
+                          <input id="col15" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Donor</label>
+                      </div>
+                      <div>
+                          <input id="col16" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Budget Code</label>
+                      </div>
+                      <div>
+                          <input id="col17" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Supplier's Name</label>
+                      </div>
+                      <div>
+                          <input id="col18" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Comments</label>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% load static %}
+{% block scripts %}
+
+
+<!--    Customization JS for table search-->
+    <script src='{% static "js/tablesearch.js" %}'></script>
+    <script src='{% static "js/table.js" %}'></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/datatables.min.css" %}"/>
+    <script src='{% static "js/datatables.min.js" %}'></script>
+{% endblock %}

@@ -1,0 +1,181 @@
+.main1{
+    overflow: auto;
+    display: table;
+
+
+
+}
+
+.main{
+    margin-left: 75px;
+    margin-top: 100px;
+    margin-bottom: 75px;
+    display: inline-block;
+    margin-right: auto;
+
+}
+
+h1 {
+    color: #08415C;
+}
+
+h2 {
+    color: #08415C;
+}
+
+/* NAVBAR DESIGN */
+.nav-design {
+    background: white;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-style: none;
+    position: fixed !important;
+    width: 100%;
+
+    box-shadow: 0px 0px 8px 0px;
+    -webkit-box-shadow: 0px 0px 8px 0px;
+    -moz-box-shadow: 0px 0px 8px 0px;
+}
+.nav-design a{
+    color: black;
+    font-size: 16px;
+}
+.nav-design i{
+    margin-left: 5px;
+}
+.shift-right{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.align-right {
+    margin-left: 950px;
+}
+
+/* MODAL */
+
+.modal-backdrop.in {
+/* prevents modal from dimming */
+    z-index: auto;
+}
+
+
+/* MENU BAR CSS */
+
+.ui.menu {
+    margin-bottom: 0px;
+    box-shadow: 0px 0px 0px 0px !important;
+}
+
+.item{
+    height: 40px;
+    font-size: 14px;
+}
+
+.item::before{
+
+}
+
+.menu-header {
+    margin-bottom: 15px;
+}
+
+/* FORM ELEMENTS CSS */
+
+.button-holder{
+    margin-bottom: 10px;
+}
+
+.button-assign{
+    background-color: #08415C;
+}
+
+.cust-select{
+    width: 350px;
+    margin-right: 20px;
+    margin-bottom: 15py px;
+}
+.create-view{
+    width: 400px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border: 0.5px solid #E6E6E6;
+    border-radius: 7px;
+}
+.bordered-div{
+    border: 0.5px solid #E6E6E6;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.user-display {
+    margin-left: -15px;
+    margin-bottom: 10px;
+}
+.user-button{
+    margin-top: 25px;
+}
+
+/* HISTORY MODEL CSS */
+
+.reports{
+    width: 400px;
+}
+
+
+
+/* LIST VIEW CSS */
+
+#wrapper {
+    width: 90vw;
+    overflow-x: auto;
+}
+
+.list-view{
+    width:1000px;
+}
+
+.list-info{
+    margin-top: 20px;
+    margin-bottom:30px;
+}
+
+.table-search{
+    font-size:10px;
+    height: 25px;
+}
+
+.ui.table thead{
+    text-align: center;
+}
+.narrow-table{
+    width: 1000px;
+    overflow-x: auto;
+}
+
+/* LIST VIEW CUSTOMIZER */
+
+.dt-buttons {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+.dataTables_length {
+    float: left;
+}
+.dataTables_filter{
+    float: right;
+}
+
+th{
+    font-size:13px;
+}
+
+td {
+    font-size: 12px;
+}

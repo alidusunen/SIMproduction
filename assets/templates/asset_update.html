@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>Create Asset</h2>
+    <p>Make sure all required information is filled before you submit</p>
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 create-view">
+                    <div class="form-group ">
+                        <h4> Asset Information </h4>
+                        <label>Tag Number</label>
+                        <input name="tag_number" class="form-control form-control-sm" type="text" placeholder="CCC/YY/DDD" value="{{object.tag_number}}">
+                        <small class="form-text text-muted">Use the format in ex: IRQ/YY/100</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input name="brand" class="form-control form-control-sm" type="text" placeholder="Enter brand Here" value="{{object.brand}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Model</label>
+                        <input name="model" class="form-control form-control-sm" type="text" placeholder="Enter model here" value="{{object.model}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Serial Number</label>
+                        <input name="serial" class="form-control form-control-sm" type="text" placeholder="Enter serial #" value="{{object.serial}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input name="description" class="form-control form-control-sm" type="text" placeholder="Enter description here" value="{{object.description}}">
+                    </div>
+                    <div class="cust-select">
+                        <label>Sub-Category</label>
+                        <select id="" name="sub_cat" class="form-control selectpicker" data-live-search="true" searchable="Current Sub-Category {{ object.sub_category.name }}">
+                            <option value="{{ object.sub_category.id }}" selected>Current Sub-Category {{ object.sub_category.name }}</option>
+                            {% for instance in subcategory %}
+                            <option data-tokens="{{instance.name}}" value="{{ instance.id }}">{{instance.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="col-sm-6 create-view">
+                    <h4> Location & User Information </h4>
+                    <div class="container cust-select">
+
+                            <div class="row">
+                                <div class="col-sm-9 user-display">
+
+                                        <label>User</label>
+                                        <select name="custodian" class="form-control selectpicker">
+                                        <option value="{{ object.custodian.id }}" selected> {{ object.custodian.name }}</option>
+                                        </select>
+
+
+                                </div>
+                                <div class="col-sm-3 user-button">
+                                    <a href="{% url 'assets:asset-assign' object.id %}" type="button" class="btn btn-primary button-assign">Assign</a>
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input name="location" class="form-control form-control-sm" type="text" placeholder="Enter Base Location" value="{{object.location}}">
+                        <small class="form-text text-muted">3 digit base code. Ex: ERB</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Physical Location</label>
+                        <input name="physical_location" class="form-control form-control-sm" type="text" placeholder="Enter physical location" value="{{object.physical_location}}">
+                        <small class="form-text text-muted">Ex: WASH Office 1 or Drivers Room</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Condition</label>
+                        <select name="condition" class="form-control" id="exampleFormControlSelect1">
+                            <option>Good</option>
+                            <option>Broken</option>
+                            <option>Maintenance</option>
+                            <option>Lost</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Accessories</label>
+                        <input name="accessories" class="form-control form-control-sm" type="text" placeholder="Enter list of accessories" value="{{object.accessories}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 create-view">
+                    <h4> Purchase Information </h4>
+                    <div class="form-group">
+                        <label>Purchase File Reference</label>
+                        <input name="purchaseReference" class="form-control form-control-sm" type="text" placeholder="Enter list of accessories" value="{{object.purchaseReference}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Invoice Date</label>
+                        <div class="input-group date" data-date-format="yyyy-mm-dd">
+                            <input name="purchaseDate" type="text" class="form-control" data-date-format="mm/dd/yyyy" value="{{object.purchaseDate|date:"Y-m-d"}}">
+                            <div class="input-group-addon" >
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input name="price" class="form-control form-control-sm" type="number" placeholder="Price in USD" value="{{object.price}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Supplier's Name</label>
+                            <input name="supplierName" class="form-control form-control-sm" type="text" placeholder="" value="{{object.supplierName}}">
+                        </div>
+                </div>
+            </div>
+                <div class="col-sm-6 create-view">
+                    <div class="form-group">
+                            <h4> Donor Information </h4>
+                            <label>Donor</label>
+                            <input name="donor" class="form-control form-control-sm" type="text" placeholder="" value="{{object.donor}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Budget Code</label>
+                            <input name="budgetCode" class="form-control form-control-sm" type="text" placeholder="" value="{{object.budgetCode}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Comments</label>
+                            <textarea name="comments" class="form-control" rows="3" value="{{object.comments}}"></textarea>
+                        </div>
+                </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{% url 'assets:asset-detail' object.id %}" type="submit" class="btn btn-danger">Cancel</a>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+{% load static %}
+{% block scripts %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <script src='{% static "js/datepicker.js" %}'></script>
+
+{% endblock %}

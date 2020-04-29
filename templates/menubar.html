@@ -1,0 +1,26 @@
+<!--<div class="ui menu fixed-top">-->
+<!--  <div class="right menu">-->
+<!--    <div class="header item">-->
+<!--      Our Company-->
+<!--    </div>-->
+<!--    <a class="item">-->
+<!--      About Us-->
+<!--    </a>-->
+<!--    <a class="item">-->
+<!--      Jobs-->
+<!--    </a>-->
+<!--    <a class="item">-->
+<!--      Locations-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</div>-->
+<nav class="navbar fixed-top navbar-light bg-light nav-design ">
+  <div class="shift-right">
+    <a class="navbar-brand" id="toggler" href="#">Menu<i class="list icon"></i></a>
+    <div class="align-right">
+      <a class="navbar-brand" href="#">Hello, {{ request.user }}<i class="user icon"></i></a>
+      <a class="navbar-brand" href="{% url 'logout' %}">Logout<i class="ban icon"></i></a>
+    </div>
+  </div>
+
+</nav>

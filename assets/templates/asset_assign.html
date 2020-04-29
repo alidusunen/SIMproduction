@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ object.tag_number }}</h1>
+<p>{{ object.descriptipm }}</p>
+<p>{{ object.price }}</p>
+
+<!--<form action="." method="POST"> {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <input type="submit" value='Save' />-->
+<!--</form>-->
+
+<form method="POST", action=".">
+    {% csrf_token %}
+
+    <div class="cust-select">
+        <select id="custodian" name="custodian" class="form-control selectpicker" data-live-search="true" searchable="Current Custodian {{ object.custodian.name }}">
+          <option value="" disabled selected>Current Custodian {{ object.custodian.name }}</option>
+            {% for instance in custodian %}
+          <option data-tokens="{{instance.name}}" value="{{ instance.id }}">{{instance.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <p></p>
+    <input class="btn btn-primary" type="submit" value='Save' />
+
+</form>
+
+{% endblock %}
+
+
