@@ -38,13 +38,13 @@ class Asset(models.Model):
     def get_absolute_url(self):
         return reverse("assets:asset-detail", kwargs={"asset_id":self.id})
 
-    # def depreciation(self):
-    #     d1 = self.purchaseDate
-    #     d2 = date.today()
-    #     # Calculate the number of months
-    #     months = (d2.year - d1.year)*12 +(d2.month-d1.month)
-    #     #Calculate the amount of total depreciation
-    #     reduction = self.price*Decimal(months/self.sub_category.depreciation_length)
+    def depreciation(self):
+        d1 = self.purchaseDate
+        d2 = date.today()
+        # Calculate the number of months
+        months = (d2.year - d1.year)*12 +(d2.month-d1.month)
+        #Calculate the amount of total depreciation
+        reduction = self.price*Decimal(months/self.sub_category.depreciation_length)
     #
     #     result = round(self.price - reduction, 2)
     #
