@@ -45,12 +45,12 @@ class Asset(models.Model):
         months = (d2.year - d1.year)*12 +(d2.month-d1.month)
         #Calculate the amount of total depreciation
         reduction = self.price*Decimal(months/self.sub_category.depreciation_length)
-    #
-    #     result = round(self.price - reduction, 2)
-    #
-    #     if result > 0:
-    #         return result
-    #
+
+        result = round(self.price - reduction, 2)
+
+        if result > 0:
+            return result
+
     #     return 0
 
 
