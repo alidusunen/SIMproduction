@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from pages.views import home_view, login_view, logout_view
+from pages.views import home_view, login_view, logout_view, auth_view
 
 urlpatterns = [
     path('assets/', include('assets.urls')),
@@ -30,4 +30,5 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
+    path('auth_error', auth_view, name='auth-error')
 ]

@@ -34,3 +34,6 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+def auth_view(request):
+    return render(request,'auth.html', {})
