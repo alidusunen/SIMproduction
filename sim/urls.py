@@ -24,6 +24,7 @@ urlpatterns = [
     path('reports/', include('history.urls')),
     path('allocations/', include('allocations.urls')),
     path('disposals/', include('disposals.urls')),
+    path('categories/', include('categories.urls')),
 
     path('admin/', admin.site.urls),
     path('home/', home_view, name='home'),

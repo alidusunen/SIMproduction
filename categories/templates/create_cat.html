@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="cust-select">
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Category Name</label>
+            <input name="name" class="form-control form-control-sm" type="text" placeholder="Enter Name Here">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

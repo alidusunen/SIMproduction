@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="cust-select">
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Sub-Category Name</label>
+            <input name="name" class="form-control form-control-sm" type="text" placeholder="Enter Name Here">
+        </div>
+        <div class="form-group">
+            <div class="cust-select">
+                <label>Parent Category</label>
+                <select id="" name="category" class="form-control selectpicker" data-live-search="true" searchable="Select Category">
+                    {% for instance in object_list %}
+                    <option data-tokens="{{instance.name}}" value="{{ instance.id }}">{{instance.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Useful Life</label>
+            <input name="depreciation" class="form-control form-control-sm" type="text" placeholder="ex: 36">
+            <small class="form-text text-muted">Enter useful life in months for this sub-category</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+{% endblock %}

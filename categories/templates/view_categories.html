@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="{% url 'categories:cat-create' %}" class="btn btn-warning"> Create Category </a>
+<a href="{% url 'categories:subcat-create' %}" class="btn btn-warning"> Create Sub-Category </a>
+
+<div class="list-info">
+    <h1> List of Categories and Subcategories</h1>
+    <p>- Categories can and subcategories can be created here via this page</p>
+    <p>- Create the category first and sub-category later due to parent-child relation</p>
+    <p>- Deletions must be made through admin panel</p>
+</div>
+
+    <div class="narrow-table">
+        <table class="ui selectable celled striped table" id="mainTable">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Sub-Category</th>
+              <th>Useful Lifetime</th>
+            </tr>
+
+          </thead>
+          <tbody>
+            {% for instance in object_list %}
+            <tr>
+              <td>{{ instance.category.name }}</td>
+              <td>{{ instance.name }}</td>
+              <td>{{ instance.depreciation_length}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% load static %}
+{% block scripts %}
+
+<!--    Customization JS for table search-->
+    <script src='{% static "js/tablesearch.js" %}'></script>
+    <script src='{% static "js/table.js" %}'></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/datatables.min.css" %}"/>
+    <script src='{% static "js/datatables.min.js" %}'></script>
+
+
+{% endblock %}
