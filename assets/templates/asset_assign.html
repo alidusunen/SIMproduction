@@ -2,31 +2,50 @@
 
 {% block content %}
 
-<h1>{{ object.tag_number }}</h1>
-<p>{{ object.descriptipm }}</p>
-<p>{{ object.price }}</p>
-
-<!--<form action="." method="POST"> {% csrf_token %}-->
-<!--    {{ form.as_p }}-->
-<!--    <input type="submit" value='Save' />-->
-<!--</form>-->
-
-<form method="POST", action=".">
-    {% csrf_token %}
-
-    <div class="cust-select">
-        <select id="custodian" name="custodian" class="form-control selectpicker" data-live-search="true" searchable="Current Custodian {{ object.custodian.name }}">
-          <option value="" disabled selected>Current Custodian {{ object.custodian.name }}</option>
-            {% for instance in custodian %}
-          <option data-tokens="{{instance.name}}" value="{{ instance.id }}">{{instance.name}}</option>
-            {% endfor %}
-        </select>
+<div>
+    <h2>Asset Assign {{ object.tag_number }}</h2>
+    <div class="container">
+        <div class="row">
+            <form method="POST", action=".">
+                {% csrf_token %}
+                <div class="col-sm-6 create-view">
+                    <div class="form-group ">
+                        <h4> Asset Information </h4>
+                        <label>Tag Number</label>
+                        <p>{{ object.tag_number }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <p>{{ object.description }}</p>
+                    </div>
+                    <div class="cust-select">
+                        <label>Select User:</label>
+                        <select id="custodian" name="custodian" class="form-control selectpicker" data-live-search="true" searchable="Current Custodian {{ object.custodian.name }}">
+                            <option value="" disabled selected>Current Custodian {{ object.custodian.name }}</option>
+                            {% for instance in custodian %}
+                            <option data-tokens="{{instance.name}}" value="{{ instance.id }}">{{instance.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6 create-view">
+                    <div class="form-group">
+                        <h4> Location Information </h4>
+                        <label>Location</label>
+                        <input name="location" class="form-control form-control-sm" type="text" placeholder="Enter Base Location" value="{{object.location}}">
+                        <small class="form-text text-muted">3 digit base code. Ex: ERB</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Physical Location</label>
+                        <input name="physical_location" class="form-control form-control-sm" type="text" placeholder="Enter physical location" value="{{object.physical_location}}">
+                        <small class="form-text text-muted">Ex: WASH Office 1 or Drivers Room</small>
+                    </div>
+                </div>
+        </div>
     </div>
-
-    <p></p>
     <input class="btn btn-primary" type="submit" value='Save' />
-
-</form>
+        </form>
+</div>
 
 {% endblock %}
 
