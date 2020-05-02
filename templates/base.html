@@ -39,12 +39,13 @@
         <div class="menu-header">
             <h4 class="item" style="font-weight: bold; text-align:center">Smart INV Manager </h4>
         </div>
-        <a class="item" href="/home">Home</a>
-        <a class="item" href="/assets/list_view">Assets</a>
-        <a class="item" href="/custodians/">Custodians</a>
-        <a class="item" href="/reports/">Reports</a>
-        <a class="item" href="/allocations/">Allocations</a>
-        <a class="item" href="/disposals/">Disposals</a>
+        <a class="item" href="{% url 'home' %}">Home</a>
+        <a class="item" href="{% url 'assets:list-view' %}">Assets</a>
+        <a class="item" href="{% url 'custodians:view_custodians' %}">Custodians</a>
+        <a class="item" href="{% url 'reports:reports-main' %}">Reports</a>
+        <a class="item" href="{% url 'allocations:list-view' %}">Allocations</a>
+        <a class="item" href="{% url 'disposals:list-view' %}">Disposals</a>
+        <a class="item" href="{% url 'categories:view-categories' %}">Categories</a>
     </div>
 
 

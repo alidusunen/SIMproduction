@@ -27,7 +27,7 @@ urlpatterns = [
     path('categories/', include('categories.urls')),
 
     path('admin/', admin.site.urls),
-    path('home/', home_view, name='home'),
+    path('', home_view, name='home'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
 ]
