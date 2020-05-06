@@ -3,8 +3,108 @@
 
 {% block content %}
 
-<h1>Welcome to Home View</h1>
-{{ request.user }}
-<p>This is a template</p>
+<div>
+    <p>   </p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9 tabular">
+                    <h1>Welcome to Smart Inventory Management (SIM)</h1>
+                    <p> SIM is a web application designed primarily for Humanitarian Organizations to increase efficiency and accuracy of Asset and Stock Management.
+                    Current version only includes asset management module and stock management is under development.</p>
+                    <p>The application is open source and free to use. The source files can be found <a href="https://github.com/alidusunen/SIMproduction"> here.</a> If you
+                    have any questions regarding the code feel free to contact via github with the developer.</p>
+                    <h3>Framework and APIs</h3>
+                    <p> SIM uses powerful Django Python Framework as the main build component. Datatables jQuery plug-in is used for table views and Bootstrap 4
+                     and Semantic UI are used as main design elements. In short a variety of programing languages are used to make this happpen.</p>
+                    <p>Postgres Database are used in this production sample. Application is running on a free Heroku server as it can be told from the URL</p>
+                    <p>Additional information in detail can be found under the relavent section for devolopers.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9 tabular">
+                    <h3>How does it work?</h3>
+                    <p>If you are already working in humanitarian logistics you will find the terminology used in the application quite familiar.
+                    Like all organizations have their differences in their process, SIM is based on a fusion of "best practices" in inventory management
+                        and might be a bit different than what you are already using. </p>
+                    <p>There are 6 main sections for Asset management. Brief explanation of each can be found below:</p>
+                    <h4>Assets:</h4>
+                    <p>As you can imagine from the name, it is the main function where you can view, create, assign
+                        and update assets recorded in your database</p>
+                    <h4>Users:</h4>
+                    <p>Here you can view, create, assign
+                        and update users(employees) of your organization. This "user" class is seperate from users of the application and is
+                    reffered as "custodian" in the code to avoid overlaps with django user class.</p>
+                    <h4>Reports:</h4>
+                    <p>Under this section you can select a user or an asset to generate a report. In user reports,
+                    you will find the all the assets assigned to this user in a chronological order with dates. In asset reports you will find
+                    in chronological order users of this asset and the date of assignment</p>
+                    <p> Important!!: Report entries are automatically generated when and asset issuance is made. These records can only be accessed
+                    modified and deleted through admin panel which will be explained in detail later.</p>
+                    <h4>Allocations:</h4>
+                    <p> This is where end of grant allocations are done. Once an allocation is created, Donor and Budget line of the asset will
+                    be automatically changed based on the allocation information entered on "create". </p><p> Allocations can be viewed in list and in detail
+                    where list of allocated assets can be found in a table including the prior donor information. Also allocation information can be found in asset details as well</p>
+                    <h4>Disposal:</h4>
+                    <p>Under this section, you can select assets to dispose from the master database referring to a document number and mode of disposal. At the moment disposed assets still remain in the master database.
+                        Based on ypur organizations policy python code can be modified:</p>
+                        <p>- To remove the asset and save it to another database table called "disposed".</p>
+                        <p>- To change the assets condition to disposed</p>
+                    <h4>Categories:</h4>
+                    <p> Here you can view and create categories and subcategories. Update and delete functions can only be done through admin panel(info below)</p>
+                    <h3>Django Admin</h3>
+                    <p> Django Admin panel is a User interface to manage database tables and models created under this application. As default it is not "user friendly"
+                    but is a valuable tool to fix major issues that can occure in the database. Some functionalities are only accessible via admin database such as delete and
+                    update of categories and subcategories.</p><p> Through admin panel, it is possible to import data from various file formats(excel, csv) as well as export</p>
+                    <h3>Table Functionalities</h3>
+                    <p>This application uses <a href="https://datatables.net/">"Datatable"</a> j-query Plug-In to visualize database tables in the most customizable way possible.</p>
+                    <h4>Viewing Data:</h4>
+                    <p>By default, tables are set to display 50 items per page. It can be reduced or increased based on your needs.</p>
+                    <h4>Search Function:</h4>
+                    <p>- You can search the all rows and colums from the search bar on the upper right corner.</p>
+                    <p>- Each column has a searchbar where you can use it as "filter".</p>
+                    <p>- Searches are done in realtime no need to hit any key.</p>
+                    <p>- Searches will apply for the whole table, not only for visible items.</p>
+                    <h4>Column Customization:</h4>
+                    <p>- Column width can be resized based on your need.</p>
+                    <p>- Columns order can be changed via drag the column title.</p>
+                    <p>- In assets main view, columns can be hidden.</p>
+                    <h4>Excel Export:</h4>
+                    <p>- You can export the view you filtered as an excel file.</p>
+                    <p>- Hidden columns will not be reflected on the excel file.</p>
+                    <h3> User Permissions </h3>
+                    <p> The users mentioned here are not the custodians of the assests but the users of the application.
+                        Currently there are 4 permission levels are defined for users and a user created for testing purposes for each. Additional users can be created via Django admin
+                    panel and assigned to a group based on their responsibilities.</p>
+                    <p>Password for all test user accounts are the same. test_123</p>
+                    <h4>Logistics Coordinator</h4>
+                    <p>test username: logco</p>
+                    <p>-This group is a superuser meaning has full access to all functionalities and the admin panel.</p>
+                    <p>-Log Co is the only group that can create allocations and disposals, delete assets. </p>
+                    <h4>Logistics Manager</h4>
+                    <p>test username: logmanager</p>
+                    <p>-This group can create and update assets and users.</p>
+                    <p>-It can delete users.</p>
+                    <h4>Logistics Officer</h4>
+                    <p>test username: logofficer</p>
+                    <p>-This group can create and update assets and users.</p>
+                    <h4>Logistics Assistant</h4>
+                    <p>test username: logassistant</p>
+                    <p>-This group can only view the pages and assign assets.</p>
+                    <p>-Other functionalities are disabled.</p>
+                    <h3>Notes for Devolopers</h3>
+                    <p>To be updated....</p>
+                    <p>Key points regarding the code will be explained here in detail. There will be a page added to github
+                    for developers to explain the algorithms. For now here are a few key points:</p>
+                    <p>Depreaciation: It is calculated in a function under "assets" model. Basically it calculates number of months passed until today
+                    and deducts the monthly rate from the purchase value.</p>
+                    <p>Each "section" is built as a separate django app.</p>
+                    <p>Debugging option is left true for test purposes. There is no sensetive data involved so no security concerns at the moment.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

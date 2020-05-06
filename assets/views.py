@@ -174,7 +174,7 @@ def assign_view(request, asset_id):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['logco', 'logmanager', 'logofficer', 'logassistant'])
+@allowed_users(allowed_roles=['logco'])
 def delete_view(request,product_id):
     #Show method if exists:
     obj = Asset.objects.get(id=product_id)

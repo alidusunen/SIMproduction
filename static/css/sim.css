@@ -1,9 +1,6 @@
 .main1{
     overflow: auto;
     display: table;
-
-
-
 }
 
 .main{
@@ -22,6 +19,16 @@ h1 {
 h2 {
     color: #08415C;
 }
+/* HOME DESIGN */
+.tabular{
+    margin-left: 20px;
+    width:700px;
+}
+.tabular p{
+    font-size:16px;
+    margin-bottom:20px;
+}
+
 
 /* NAVBAR DESIGN */
 .nav-design {
