@@ -5,6 +5,7 @@ from datetime import date
 from assets.models import Asset
 
 
+
 class Allocation(models.Model):
 
     documentNumber = models.CharField(max_length = 40)

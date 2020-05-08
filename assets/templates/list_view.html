@@ -4,6 +4,7 @@
 
 <a href="{% url 'assets:asset-create' %} " class="btn btn-warning"> Create Asset </a>
 <button type="button"  data-toggle="modal" data-target="#columnHide" class="btn btn-danger" >Hide Columns</button>
+<button type="button"  data-toggle="modal" id="refresher" class="btn btn-secondary" >Reset Table</button>
 
 <div class="list-info">
     <h1>List of Assets</h1>
@@ -39,6 +40,8 @@
               <th>Budget Code</th>
               <th>Supplier's Name</th>
               <th>Comments</th>
+              <th>Allocated</th>
+              <th>Disposed</th>
             </tr>
           </thead>
           <tbody>
@@ -52,18 +55,20 @@
               <td>{{ instance.sub_category.category.name}}</a></td>
               <td>{{ instance.sub_category.name}}</a></td>
               <td class="selectable"><a href="{{ instance.custodian.get_absolute_url }}">{{ instance.custodian.name }}</a></td>
-              <td>{{ instance.location }}</a></td>
-              <td>{{ instance.physical_location }}</a></td>
-              <td>{{ instance.condition }}</a></td>
-              <td>{{ instance.accessories }}</a></td>
-              <td>{{ instance.purchaseReference }}</a></td>
-              <td>{{ instance.purchaseDate }}</a></td>
-              <td>{{ instance.price }}</a></td>
-              <td>{{ instance.depreciation }}</a></td>
-              <td>{{ instance.donor }}</a></td>
-              <td>{{ instance.budgetCode }}</a></td>
-              <td>{{ instance.supplierName }}</a></td>
-              <td>{{ instance.comments }}</a></td>
+              <td>{{ instance.location }}</td>
+              <td>{{ instance.physical_location }}</td>
+              <td>{{ instance.condition }}</td>
+              <td>{{ instance.accessories }}</td>
+              <td>{{ instance.purchaseReference }}</td>
+              <td>{{ instance.purchaseDate }}</td>
+              <td>{{ instance.price }}</td>
+              <td>{{ instance.depreciation }}</td>
+              <td>{{ instance.donor }}</td>
+              <td>{{ instance.budgetCode }}</td>
+              <td>{{ instance.supplierName }}</td>
+              <td>{{ instance.comments }}</td>
+              <td>{{ instance.is_allocated }}</td>
+              <td>{{ instance.is_disposed }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -96,6 +101,10 @@
                       <div>
                           <input id="sect3" type="checkbox" class="form-check-input">
                           <label class="form-check-label asset-label">Asset Assign View</label>
+                      </div>
+                      <div>
+                          <input id="sect4" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Allocation & Disposal</label>
                       </div>
                   </div>
                   <div class="col-lg-6">
@@ -161,18 +170,22 @@
                       </div>
                       <div>
                           <input id="col15" type="checkbox" class="form-check-input">
-                          <label class="form-check-label asset-label">Donor</label>
+                          <label class="form-check-label asset-label">Current Value</label>
                       </div>
                       <div>
                           <input id="col16" type="checkbox" class="form-check-input">
-                          <label class="form-check-label asset-label">Budget Code</label>
+                          <label class="form-check-label asset-label">Donor</label>
                       </div>
                       <div>
                           <input id="col17" type="checkbox" class="form-check-input">
-                          <label class="form-check-label asset-label">Supplier's Name</label>
+                          <label class="form-check-label asset-label">Budget Code</label>
                       </div>
                       <div>
                           <input id="col18" type="checkbox" class="form-check-input">
+                          <label class="form-check-label asset-label">Supplier's Name</label>
+                      </div>
+                      <div>
+                          <input id="col19" type="checkbox" class="form-check-input">
                           <label class="form-check-label asset-label">Comments</label>
                       </div>
                   </div>

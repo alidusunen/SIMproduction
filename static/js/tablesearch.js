@@ -23,8 +23,12 @@ $(document).ready(function() {
         "ordering": false,
         "lengthMenu": [ [10, 25, 50, 75, 100, -1], [10, 25, 50, 75, 100, "All"] ],
         'dom': 'BRflrtip',
-        colReorder: true,
 
+        colReorder: true,
+//        saves the state of the view
+        stateSave: true,
+//        defines the time for state refresh(set to 1 hour)
+        "stateDuration": 60 * 60 * 1,
         buttons: [
             {
                 extend: 'excel',
@@ -36,8 +40,9 @@ $(document).ready(function() {
 //           ### Hide Columns via Checkboxes
 //           ### Group Hide
             $('#sect1').change(function() {table.columns([7,8,9,10,11]).visible(!$(this).is(':checked'))});
-            $('#sect2').change(function() {table.columns([12,13,14,15,16,17]).visible(!$(this).is(':checked'))});
-            $('#sect3').change(function() {table.columns([1,2,5,12,13,14,15,16,17]).visible(!$(this).is(':checked'))});
+            $('#sect2').change(function() {table.columns([12,13,14,15,16,17,18,20,21]).visible(!$(this).is(':checked'))});
+            $('#sect3').change(function() {table.columns([1,2,5,12,13,14,15,16,17,18,20,21]).visible(!$(this).is(':checked'))});
+            $('#sect4').change(function() {table.columns([20,21]).visible(!$(this).is(':checked'))});
 //           ### Column Hide
 //           ### Asset Properties
             $('#col1').change(function() {table.columns(1).visible(!$(this).is(':checked'))});
@@ -59,6 +64,16 @@ $(document).ready(function() {
             $('#col16').change(function() {table.columns(16).visible(!$(this).is(':checked'))});
             $('#col17').change(function() {table.columns(17).visible(!$(this).is(':checked'))});
             $('#col18').change(function() {table.columns(18).visible(!$(this).is(':checked'))});
+            $('#col19').change(function() {table.columns(19).visible(!$(this).is(':checked'))});
+
+//          refreshes the save state of the table
+            $('#refresher').click(function() {
+                table.state.clear();
+                window.location.reload();
+            });
+
+
+
 
 // working code for button click columm removal
 //    document.getElementById("tester").onclick = function () { table.column( 0 ).visible( false ); };

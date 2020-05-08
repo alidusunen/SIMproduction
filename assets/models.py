@@ -6,6 +6,7 @@ from decimal import Decimal
 from custodians.models import Custodian
 from categories.models import SubCategory
 
+
 class Asset(models.Model):
     #Asset Details
     tag_number = models.CharField(max_length=18)
@@ -51,7 +52,24 @@ class Asset(models.Model):
         if result > 0:
             return result
 
-    #     return 0
+    def is_allocated(self):
+        y = "Yes"
+        n = "No"
+        val = self.allocation_set.all()
+
+        if val.exists():
+            return y
+        else:
+            return n
+
+    def is_disposed(self):
+        y = "Yes"
+        n = "No"
+        val = self.disposal_set.all()
+        if val.exists():
+            return y
+        else:
+            return n
 
 
 
