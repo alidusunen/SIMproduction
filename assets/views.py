@@ -157,6 +157,7 @@ def assign_view(request, asset_id):
         a_id = get_object_or_404(Asset, id=asset_id)
         a_id.location = request.POST.get('location')
         a_id.physical_location = request.POST.get('physical_location')
+        a_id.comments = request.POST.get('comments')
         #gets "asset"
         data = request.POST.get('custodian')
         #gets "custodian_id" from post data

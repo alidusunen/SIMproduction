@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-sm-6 create-view">
                     <div class="form-group">
-                        <h4> Location Information </h4>
+                        <h4> Other Information </h4>
                         <label>Location</label>
                         <input name="location" class="form-control form-control-sm" type="text" placeholder="Enter Base Location" value="{{object.location}}">
                         <small class="form-text text-muted">3 digit base code. Ex: ERB</small>
@@ -40,6 +40,10 @@
                         <input name="physical_location" class="form-control form-control-sm" type="text" placeholder="Enter physical location" value="{{object.physical_location}}">
                         <small class="form-text text-muted">Ex: WASH Office 1 or Drivers Room</small>
                     </div>
+                    <div class="form-group">
+                            <label>Comments</label>
+                            <textarea name="comments" class="form-control" rows="3">{{object.comments}}</textarea>
+                        </div>
                 </div>
         </div>
     </div>
