@@ -16,9 +16,9 @@
           <tbody>
             {% for instance in object_list %}
             <tr>
-              <td class="selectable"><a href="">{{ instance.asset_id.tag_number }}</a></td>
-              <td class="selectable"><a href="">{{ instance.asset_id.description }} </a></td>
-              <td class="selectable"><a href="">{{ instance.history_date }}</a></td>
+              <td class="selectable"><a href="{{ instance.asset_id.get_absolute_url }}">{{ instance.asset_id.tag_number }}</a></td>
+              <td class="selectable"><a href="{{ instance.asset_id.get_absolute_url }}">{{ instance.asset_id.description }} </a></td>
+              <td class="selectable">{{ instance.history_date }}</td>
 
             </tr>
             {% endfor %}

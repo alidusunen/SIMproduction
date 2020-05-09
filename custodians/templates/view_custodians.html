@@ -18,9 +18,9 @@
           <tbody>
             {% for instance in object_list %}
             <tr>
-              <td>{{ instance.base }}</a></td>
+              <td>{{ instance.base }}</td>
               <td class="selectable"><a href="{{ instance.get_absolute_url }}">{{ instance.name }}</a></td>
-              <td>{{ instance.position }}</a></td>
+              <td>{{ instance.position }}</td>
             </tr>
             {% endfor %}
           </tbody>
